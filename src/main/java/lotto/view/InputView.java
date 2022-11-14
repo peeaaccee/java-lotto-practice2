@@ -13,6 +13,10 @@ public class InputView {
     public static int inputLottoAmount() {
         OutputView.printInputAmount();
         String money = Console.readLine();
+        if(!money.matches("^[0-9]+$")) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
+        }
+
         int amount = parseInt(money);
 
         if(amount % 1000 != 0) {
