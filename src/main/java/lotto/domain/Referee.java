@@ -1,10 +1,6 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Referee {
@@ -33,7 +29,7 @@ public class Referee {
 
         // fix
         public Map<String, Integer> getStatics(List<Grade> grades) {
-            Map<String, Integer> map = new HashMap<>();
+            Map<String, Integer> map = new LinkedHashMap<String, Integer>();
             map.put("3",0);
             map.put("4",0);
             map.put("5",0);

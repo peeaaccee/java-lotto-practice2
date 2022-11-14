@@ -6,13 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.lang.Integer.*;
+import static java.lang.Integer.parseInt;
+
 public class InputView {
     public static int inputLottoAmount() {
         OutputView.printInputAmount();
         String money = Console.readLine();
-        return Integer.parseInt(money);
-    }
+        int amount = parseInt(money);
 
+        if(amount % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 1000원 단위로 구입해야 합니다.");
+        }
+        return amount;
+    }
 
     public static List<Integer> inputWinningNumbers() {
         OutputView.printWinningNumbers();
@@ -22,7 +29,7 @@ public class InputView {
         List<String> numberList = new ArrayList<>(List.of(numbers));
 
         List<Integer> winningNumbers = numberList.stream()
-                .map(number -> Integer.parseInt(number))
+                .map(number -> parseInt(number))
                 .collect(Collectors.toList());
 
         return winningNumbers;
@@ -32,7 +39,7 @@ public class InputView {
         OutputView.printBonusNumber();
         String bonusNumber = Console.readLine();
         System.out.println(bonusNumber);
-        return Integer.parseInt(bonusNumber);
+        return parseInt(bonusNumber);
     }
 }
 

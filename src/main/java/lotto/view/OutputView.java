@@ -7,6 +7,9 @@ import java.util.Map;
 
 import lotto.domain.Grade;
 import lotto.domain.Lotto;
+import lotto.domain.Yield;
+
+import static lotto.domain.Yield.*;
 
 public class OutputView {
     private final static String INPUT_AMOUNT_MASSAGE = "구입금액을 입력해 주세요.";
@@ -52,14 +55,24 @@ public class OutputView {
 
     // fix
     public static void printLottoStatics(Map<String, Integer> maps) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
         maps.forEach((k, v) -> {
             Grade grade = Grade.findGradeByKey(k);
-            System.out.printf("%d개 일치 (%s원) - %d개%n", grade.getMatchCount(),
-                NumberFormat.getCurrencyInstance(new Locale("ko", "KR")).format(grade.getPrizeMoney()).substring(1), v);
+
+            if (k == "5+B") {
+                System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개%n", grade.getMatchCount(),
+                        NumberFormat.getCurrencyInstance(new Locale("ko", "KR")).format(grade.getPrizeMoney()).substring(1), v);
+            }
+            if (k != "5+B") {
+                System.out.printf("%d개 일치 (%s원) - %d개%n", grade.getMatchCount(),
+                        NumberFormat.getCurrencyInstance(new Locale("ko", "KR")).format(grade.getPrizeMoney()).substring(1), v);
+            }
         });
     }
 
     public static void printLottoEarningRate(String yield) {
-        System.out.println("총 수익률은 " + yield + "%입니다.");
+        System.out.println("총 수익률은 " + yield + "입니다.");
     }
 }

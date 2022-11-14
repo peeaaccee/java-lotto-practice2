@@ -22,7 +22,6 @@ public class Yield {
     //소숫점 2째 자리에서 반올림
     public String getYield() {
         double percent = getTotalWinningPrice() * 100 / (double) totalInvestment;
-        double yield = Math.round(percent*100) / (double) 100;
-        return String.valueOf(yield);
+        return String.format("%.1f%%", percent);
     }
 }

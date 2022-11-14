@@ -15,7 +15,7 @@ import java.util.List;
 import static lotto.domain.Lotto.validateBonus;
 
 
-public class GameController {
+public class Game {
 
     private List<Lotto> purchasedLotto;
     private Lotto winningNumbers;
